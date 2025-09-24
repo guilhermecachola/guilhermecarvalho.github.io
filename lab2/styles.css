@@ -6,28 +6,30 @@ body {
 }
 
 nav {
-    background-color: #4CAF50;
-    color: white;
+     background-color: #f4f4f9;
+    color: black;
     padding: 10px 20px;
     text-align: center;
 }
 
 nav a {
-    color: white;
+     color: black;
     text-decoration: none;
     padding: 10px 20px;
     margin: 0 10px;
 }
 
 nav a:hover {
-    background-color: #45a049;
+    background-color: #f4f4f9;
 }
 
 main {
     padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
+    text-align: center; 
 }
+
 
 main img {
     width: 100%;
@@ -47,4 +49,22 @@ footer {
 
 * {
     box-sizing: border-box;
+}
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* garante que o contêiner ocupe toda a largura */
+  margin-top: 20px;
+}
+
+iframe {
+  border: 1px solid #ccc;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
 }
