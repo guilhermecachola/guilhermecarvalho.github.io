@@ -2,71 +2,51 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Multimédia</title>
-  <style>
-    .fotografias {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .fotografias img {
-      width: 150px;
-      border-radius: 20px;
-    }
-
-    section div p:nth-child(odd) {
-      color: blue;
-    }
-
-    section div p:nth-child(even) {
-      color: green;
-    }
-  </style>
+  <title>Página Multimédia</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <h2>Multimédia</h2>
-  <p>Esta página encontra conteúdos multimédia.</p>
+  <nav>
+    <ul>
+      <li><a href="#fotografias">Fotografias</a></li>
+      <li><a href="#video">Vídeo</a></li>
+      <li><a href="#poema">Poema</a></li>
+    </ul>
+  </nav>
 
+  <section class="emblematica" style="padding-top: 120px;">
+    <img src="images/emblematica.jpg" alt="Imagem Emblemática">
+  </section>
 
-  <p>
-    <a href="#fotografias">Fotografias</a>
-    <a href="#video">Vídeo</a>
-    <a href="#poema">Poema</a>
-  </p>
-
- 
-  <section>
-    <h3 id="fotografias">Fotografias</h3>
+  <section id="fotografias">
+    <h2>Fotografias</h2>
     <div class="fotografias">
-      <img src="lab2/images/Canhão.jpeg" alt="vista cidade">
-      <img src="lab2/images/comboio.jpeg" alt="elétrico">
-      <img src="lab2/images/Foto.jpeg" alt="Foto">
-      <img src="lab2/images/Mar.jpeg" alt="Beira Mar">
-      <img src="lab2/images/Marquês.jpeg" alt="Marquês">
-      <img src="lab2/images/Outra.jpeg" alt="Rua">
-      <img src="lab2/images/Ponte.jpeg" alt="Ponte">
-      <img src="lab2/images/Rua.jpeg" alt="Rua">
+      <img src="images/Canhão.jpg" alt="Vista cidade">
+      <img src="images/comboio.jpg" alt="Elétrico">
+      <img src="images/Foto.jpg" alt="Foto">
+      <img src="images/Mar.jpg" alt="Beira Mar">
+      <img src="images/Marquês.jpg" alt="Marquês">
+      <img src="images/Outra.jpg" alt="Rua">
+      <img src="images/Ponte.jpg" alt="Ponte">
+      <img src="images/Rua.jpg" alt="Rua">
     </div>
-    <p>Portugal, 2025</p>
+    <p style="text-align: center; margin-top: 20px;">Portugal, 2025</p>
   </section>
 
-  
-  <section>
-    <h3 id="video">Vídeo</h3>
-    <iframe width="560" height="315"
-            src="https://youtu.be/N8bHCHl8X_0"
-            title="YouTube"
-            frameborder="0"
-            allowfullscreen>
-    </iframe>
+  <section id="video">
+    <h2>Vídeo</h2>
+    <div class="video-container">
+      <iframe width="560" height="315"
+              src="https://www.youtube.com/embed/N8bHCHl8X_0"
+              title="Vídeo YouTube"
+              allowfullscreen>
+      </iframe>
+    </div>
   </section>
 
-  
-  <section>
-    <h3 id="poema">Poesia</h3>
+  <section id="poema">
+    <h2>Poesia</h2>
     <div>
       <p>Lisboa antiga e bela,</p>
       <p>Com o Tejo a reluzir,</p>

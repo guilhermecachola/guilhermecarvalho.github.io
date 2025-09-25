@@ -1,42 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <title>Lisboa</title>
-    <link rel="stylesheet" href="lab2/styles.css">
-
+  <meta charset="UTF-8" />
+  <title>Landing Page DIW</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <h1>A minha Cidade</h1>
 
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="contacto.html">Resumo</a></li>
-            </ul>
-        </nav>
-    </header>
+  
+  <nav>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#disciplina">DIW</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+    </ul>
+  </nav>
 
-    <main>
-        <h2>Home</h2>
-       <p>
-    Iremos criar soluções criativas!
-    <a href="lab2/index.html">Visita a minha cidade</a>
-</p>
+ 
+  <section id="hero">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1>DIW</h1>
+        <p>Design De Interface Web</p>
+        <a href="#projetos" class="botao">Ver projetos</a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="projetos">
+    <h2>Projetos</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Lab 1</h3>
+        <a href="/lab1/index.html" target="_blank">Ver projeto</a>
+      </div>
+      <div class="card">
+        <h3>Lab 2</h3>
+        <a href="/lab2/index.html" target="_blank">Ver projeto</a>
+      </div>
+      <div class="card">
+        <h3>Lab 3</h3>
+        <a href="/lab3/index.html" target="_blank">Ver projeto</a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="disciplina">
+    <h2>Design e Implementação Web</h2>
+    <div class="disciplina-conteudo">
+      <p>A disciplina DIW ensina como criar páginas web modernas, acessíveis e atrativas usando HTML5, CSS3 e boas práticas de Web Design.</p>
+    </div>
+  </section>
 
 
-        <!-- Links para os laboratórios -->
-        <h3>Laboratórios</h3>
-        <ul>
-            <li><a href="lab1/index.html">Laboratório 1</a></li>
-            <li><a href="lab2/index.html">Laboratório 2</a></li>
-        </ul>
-    </main>
-
-    <footer>
-        <p>DIW 2025</p>
-    </footer>
 </body>
 </html>
