@@ -10,300 +10,85 @@ html {
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f2f4f8;
+  background-color: #f2f2f2;
   color: #333;
   line-height: 1.6;
+  padding-top: 80px;
 }
 
-nav {
+header {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #0a0a0a;
-  z-index: 999;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  background-color: #222;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-nav ul {
+header h1 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+nav {
   display: flex;
   justify-content: center;
-  list-style: none;
-  padding: 20px 0;
   gap: 30px;
+  flex-wrap: wrap;
+  background-color: #333;
+  padding: 10px 0;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 17px;
-  transition: color 0.3s;
-}
-
-nav a:hover,
-nav a:focus {
-  color: #00eaff;
-  outline: none;
-}
-
-#hero {
-  background: url('images/hero.jpg') no-repeat center center/cover;
-  height: 100vh;
-  position: relative;
-}
-
-.hero-overlay {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(19, 19, 196, 0.0);
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-}
-
-.hero-content {
-  padding: 60px;
-  color: white;
-  max-width: 600px;
-}
-
-.hero-content h1 {
-  font-size: 52px;
-  margin-bottom: 15px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-}
-
-.hero-content p {
-  font-size: 22px;
-  margin-bottom: 25px;
-  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
-}
-
-.botao {
-  background-color: #00eaff;
-  color: #000;
-  padding: 14px 30px;
-  text-decoration: none;
-  border-radius: 8px;
   font-weight: bold;
-  font-size: 16px;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 10px rgba(0, 234, 255, 0.3);
+  font-size: 18px;
+  padding: 8px 12px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.botao:hover {
-  background-color: #00c2d6;
-  box-shadow: 0 6px 14px rgba(0, 194, 214, 0.5);
-  transform: translateY(-2px);
+nav a:hover {
+  background-color: #00eaff;
+  color: black;
+  border-radius: 5px;
 }
 
-section {
-  padding: 120px 40px 60px;
-  min-height: 100vh;
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
 }
 
-#projetos {
-  background-color: #fff;
-  text-align: center;
-}
-
-#projetos h2 {
-  font-size: 36px;
-  margin-bottom: 50px;
-  color: #003344;
-}
-
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.card {
-  background-color: #ffffff;
-  padding: 25px;
-  width: 280px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.card h3 {
-  margin-bottom: 10px;
-  color: #005577;
-  font-size: 22px;
-}
-
-.card p {
-  color: #666;
-  font-size: 16px;
-}
-
-.card a {
-  display: inline-block;
-  margin-top: 15px;
-  color: #00bcd4;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
-}
-
-.card a:hover {
-  text-decoration: underline;
-}
-
-#disciplina {
-  background-color: #e0f7fa;
-}
-
-#disciplina h2 {
-  text-align: center;
-  font-size: 34px;
-  margin-bottom: 30px;
+main h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
   color: #004d5a;
 }
 
-.disciplina-conteudo {
-  max-width: 800px;
-  margin: auto;
-  font-size: 19px;
-  text-align: center;
-  color: #333;
-  line-height: 1.8;
+main p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  text-align: justify;
 }
 
-@media (max-width: 900px) {
-  .hero-content h1 {
-    font-size: 42px;
-  }
-
-  .hero-content p {
-    font-size: 20px;
-  }
-
-  .cards {
-    gap: 30px;
-  }
-
-  .card {
-    width: 220px;
-  }
+iframe {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 600px) {
-  nav ul {
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px 0;
-  }
-
-  nav a {
-    font-size: 16px;
-  }
-
-  .hero-content {
-    padding: 30px 20px;
-    max-width: 100%;
-  }
-
-  .hero-content h1 {
-    font-size: 32px;
-  }
-
-  .hero-content p {
-    font-size: 16px;
-  }
-
-  section {
-    padding: 80px 20px 40px;
-  }
-
-  .cards {
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-  }
-
-  .card {
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .botao {
-    padding: 10px 18px;
-    font-size: 15px;
-  }
-
-  #fotografias {
-    background-color: #f0f8ff;
-  }
-
-  #video {
-    background-color: #fff0f5;
-  }
-
-  #poema {
-    background-color: #f5f5dc;
-  }
-
-  .emblematica img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 40px;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  }
-
-  .fotografias {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-
-  .fotografias img {
-    width: 160px;
-    border-radius: 16px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .fotografias img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  }
-
-  .video-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-
-  .video-container iframe {
-    max-width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  }
-
-  #poema div p {
-    font-size: 20px;
-    margin: 10px 0;
-    text-align: center;
-    color: #333;
-    font-style: italic;
-  }
+/* NOVO: layout da secção localização */
 .map-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 40px;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 .texto-localizacao {
@@ -313,14 +98,45 @@ section {
 
 .map-container {
   flex-shrink: 0;
+  width: 400px; /* mantém a largura do iframe igual ao que tens */
 }
 
-iframe {
-  border: 1px solid #ccc;
-  border-radius: 8px;
+/* Já aplicas estilo ao iframe, por isso não é necessário mudar aqui */
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #222;
+  color: white;
+  margin-top: 60px;
 }
 
 @media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav a {
+    font-size: 16px;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+
+  main h2 {
+    font-size: 24px;
+  }
+
+  main p {
+    font-size: 16px;
+  }
+  
+  /* NOVO: responsividade da secção localização */
   .map-wrapper {
     flex-direction: column;
     align-items: center;
@@ -329,11 +145,14 @@ iframe {
 
   .texto-localizacao {
     max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .map-container {
+    width: 100%;
   }
 
   iframe {
-    width: 100%;
     height: 300px;
   }
-}
 }
