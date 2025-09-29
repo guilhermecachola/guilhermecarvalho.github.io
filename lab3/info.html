@@ -5,34 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informações - Lisboa</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        td {
-            background-color: #e6f7ff;
-        }
-
-        .title {
-            text-align: center;
-            color: #333;
-        }
-    </style>
-    <link rel="stylesheet" href="lab2/styles.css">
-
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -47,47 +20,67 @@
     </header>
 
     <main>
+        <div class="grid-container">
+            <!-- Linha 1 -->
+            <div class="grid-item intro">
+                <h2>Informações sobre Lisboa</h2>
+                <p>Lisboa é a capital de Portugal, localizada na região central do país. É conhecida pela sua história, arquitetura e cultura vibrante.</p>
+            </div>
 
-        <h2 class="title">Informações</h2>
-        <p>Lisboa é a capital de Portugal, localizada na região central do país. É conhecida pela sua história,
-            arquitetura
-            e cultura vibrante.</p>
+            <div class="grid-item image1">
+                <img src="https://cdn.pixabay.com/photo/2019/07/03/18/44/tram-4314977_1280.jpg" alt="Elétrico de Lisboa">
+            </div>
 
-        <table>
-            <tr>
-                <th colspan="2">Demografia</th>
-                <th rowspan="2">Geografia</th>
-            </tr>
-            <tr>
-                <td>População</td>
-                <td>506.892 hab</td>
-            </tr>
-            <tr>
-                <td>Área</td>
-                <td>100km²</td>
-                <td>Lisboa</td>
-            </tr>
-            <tr>
-                <td>Região</td>
-                <td>Lisboa</td>
-                <td>Portugal</td>
-            </tr>
-        </table>
+            <!-- Linha 2 -->
+            <div class="grid-item demografia">
+                <h3>Demografia e Geografia</h3>
+                <table>
+                    <tr>
+                        <th colspan="2">Demografia</th>
+                        <th rowspan="2">Geografia</th>
+                    </tr>
+                    <tr>
+                        <td>População</td>
+                        <td>506.892 hab</td>
+                    </tr>
+                    <tr>
+                        <td>Área</td>
+                        <td>100km²</td>
+                        <td>Lisboa</td>
+                    </tr>
+                    <tr>
+                        <td>Região</td>
+                        <td>Lisboa</td>
+                        <td>Portugal</td>
+                    </tr>
+                </table>
+            </div>
 
-        <h3>Cinco Curiosidades sobre Lisboa:</h3>
-        <ul>
-            <li>Lisboa é uma das cidades mais antigas da Europa, com uma história que remonta ao século 2 a.C.</li>
-            <li>A famosa Torre de Belém foi construída no século XVI e servia como defesa para a cidade.</li>
-            <li>O "Eléctrico 28" é um dos meios de transporte mais emblemáticos da cidade, oferecendo vistas
-                espetaculares
-                dos bairros históricos.</li>
-            <li>A cidade é conhecida pelos seus miradouros, que oferecem vistas incríveis do rio Tejo e da cidade.</li>
-            <li>Lisboa tem uma das maiores coleções de azulejos do mundo, com peças que decoram muitos edifícios
-                históricos.
-            </li>
-        </ul>
+            <div class="grid-item image2">
+                <img src="https://cdn.pixabay.com/photo/2017/08/18/00/48/lisbon-2653298_1280.jpg" alt="Vista de Lisboa">
+            </div>
+
+            <!-- Linha 3 -->
+            <div class="grid-item image3">
+                <img src="https://cdn.pixabay.com/photo/2016/11/29/03/37/architecture-1867187_1280.jpg" alt="Torre de Belém">
+            </div>
+
+            <div class="grid-item curiosidades">
+                <h3>Cinco Curiosidades sobre Lisboa</h3>
+                <ul>
+                    <li>Lisboa é uma das cidades mais antigas da Europa, com história desde o século 2 a.C.</li>
+                    <li>A Torre de Belém foi construída no século XVI como defesa da cidade.</li>
+                    <li>O Eléctrico 28 é um dos transportes mais emblemáticos de Lisboa.</li>
+                    <li>A cidade tem vários miradouros com vistas incríveis do rio Tejo.</li>
+                    <li>Lisboa possui uma das maiores coleções de azulejos do mundo.</li>
+                </ul>
+            </div>
+        </div>
     </main>
 
+    <footer>
+        <p>&copy; 2024 Lisboa - A Minha Cidade</p>
+    </footer>
 </body>
 
 </html>
