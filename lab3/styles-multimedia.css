@@ -1,11 +1,11 @@
-.secao-emblematica {
+.seccao-emblematica{
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
 }
 
-.secao-emblematica img {
+.seccao-emblematica img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -28,9 +28,9 @@
   color: #fff;
 }
 
-#secao-fotografias { background: #006699; }
-#secao-video { background: #004466; }
-#secao-poema { background: #003355; }
+#seccao-fotografias { background: #006699; }
+#seccao-video { background: #004466; }
+#seccao-poema { background: #003355; }
 
 .galeria-fotos {
   display: flex;
