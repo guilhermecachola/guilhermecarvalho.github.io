@@ -3,25 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>Página Multimédia</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-base.css">
+  <link rel="stylesheet" href="styles-multimedia.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-  <nav>
-    <ul>
-      <li><a href="#fotografias">Fotografias</a></li>
-      <li><a href="#video">Vídeo</a></li>
-      <li><a href="#poema">Poema</a></li>
-    </ul>
-  </nav>
+ <header>
+    <h1 class="titulo-principal">A minha Cidade</h1>
+    <nav class="menu-principal">
+        <a href="index.html">Home</a>
+        <a href="local.html">Localização</a>
+        <a href="multimedia.html">Multimédia</a>
+        <a href="info.html">Informação</a>
+    </nav>
+</header>
 
-  <section class="emblematica" style="padding-top: 120px;">
+  <main>
+  
+  <section class="secao-emblematica">
     <img src="images/imagem.jpg" alt="Lisboa">
+    <h1 class="texto-emblematica">Lisboa, cidade de encanto</h1>
   </section>
 
-  <section id="fotografias">
+  
+  <section id="secao-fotografias(multimedia)" class="secao">
     <h2>Fotografias</h2>
-    <div class="fotografias">
+    <div class="galeria-fotos">
       <img src="images/Canhão.jpg" alt="Vista cidade">
       <img src="images/comboio.jpg" alt="Elétrico">
       <img src="images/Foto.jpg" alt="Foto">
@@ -31,12 +39,13 @@
       <img src="images/Ponte.jpg" alt="Ponte">
       <img src="images/Rua.jpg" alt="Rua">
     </div>
-    <p style="text-align: center; margin-top: 20px;">Portugal, 2025</p>
+    <p class="legenda-fotos">Portugal, 2025</p>
   </section>
 
-  <section id="video">
+  
+  <section id="secao-video(multimedia)" class="secao">
     <h2>Vídeo</h2>
-    <div class="video-container">
+    <div class="video-wrapper">
       <iframe width="560" height="315"
               src="https://www.youtube.com/embed/N8bHCHl8X_0"
               title="Vídeo YouTube"
@@ -45,15 +54,16 @@
     </div>
   </section>
 
-  <section id="poema">
-    <h2>Poesia</h2>
-    <div>
+  
+  <section id="secao-poema(multimedia)" class="secao">
+    <h2>Poema</h2>
+    <div class="poema-texto">
       <p>Lisboa antiga e bela,</p>
       <p>Com o Tejo a reluzir,</p>
       <p>Nos becos vive a saudade,</p>
       <p>Que nunca há de partir.</p>
     </div>
   </section>
-
+</main>
 </body>
 </html>
