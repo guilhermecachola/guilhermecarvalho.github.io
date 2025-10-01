@@ -1,0 +1,24 @@
+
+
+.texto, .mapa {
+        width: 100%;
+    }
+
+    @media styles-local
+
+
+
+    <nav>
+  <ul class="menu-principal">
+    <li><a href="index.html">Home</a></li>
+    <li>
+      <a href="produtos.html">Produtos</a>
+      <ul class="submenu">
+        <li><a href="produto1.html">Produto 1</a></li>
+        <li><a href="produto2.html">Produto 2</a></li>
+      </ul>
+    </li>
+    <li><a href="contato.html">Contacto</a></li>
+  </ul>
+</nav>
+submenu
