@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Interfaces Interativas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <p>1. <span id="hoverText" onmouseover="hoverEvent()" onmouseout="resetText()">Passa por aqui!</span></p>
+
+    <p><span id="paintText">2.Pinta-me!</span>
+      <button onclick="changeTextColor('red')">Red</button>
+      <button onclick="changeTextColor('green')">Green</button>
+      <button onclick="changeTextColor('blue')">Blue</button>
+    </p>
+
+    <p>3. Experimenta escrever...
+      <input type="text" id="textInput" oninput="cycleBackgroundColors()" />
+    </p>
+
+    <p>4. Escolha uma cor em inglês:
+      <input type="text" id="colorInput">
+      <button onclick="submitColor()">submeter</button>
+    </p>
+
+
+    <p>5. <button onclick="incrementCounter()">Conta!</button>
+      <span id="counter">33</span>
+    </p>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

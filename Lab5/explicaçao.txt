@@ -1,0 +1,5 @@
+Criei uma lista com quatro cores diferentes (por exemplo, vermelho, verde, azul e laranja). Cada vez que o utilizador escrevia uma letra, eu aplicava uma dessas cores ao fundo da caixa, e depois passava para a próxima cor da lista, criando assim um ciclo que se repetia enquanto se digitava.
+
+Para fazer isso acontecer, uso uma variável que guarda a posição da cor atual e, sempre que ocorre a digitação, o JavaScript muda o fundo para a cor dessa posição e avança para a próxima. Quando chega ao fim da lista, volta ao início, garantindo que as cores vão rodando indefinidamente.
+
+O resultado final é que o fundo da caixa de texto vai “piscando” ou mudando de cor de forma suave à medida que o utilizador vai escrevendo, tornando a interação mais dinâmica e visualmente interessante.

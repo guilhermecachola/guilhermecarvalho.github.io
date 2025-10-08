@@ -1,0 +1,22 @@
+body {
+  background-color: lavender;
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+input[type="text"] {
+  padding: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button {
+  margin-left: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
