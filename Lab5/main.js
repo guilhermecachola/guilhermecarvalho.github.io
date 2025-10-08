@@ -24,10 +24,52 @@ function submitColor() {
   document.body.style.backgroundColor = inputColor;
 }
 
+function changeBodyColor(selectElement) {
+  document.body.style.backgroundColor = selectElement.value;
+}
 
-let counter = 33;
+
+const paintText = document.getElementById('paintText');
+const buttons = document.querySelectorAll('.color-btn');
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const color = button.getAttribute('data-color');
+    paintText.style.color = color;
+    paintText.innerText = `Agora estou ${color}!`;
+  });
+});
+
+
+let counter = 72;
 
 function incrementCounter() {
   counter++;
   document.getElementById('counter').innerText = counter;
+}
+
+
+
+function showGreeting() {
+  const name = document.getElementById('nameInput').value.trim();
+  const age = document.getElementById('ageInput').value.trim();
+
+  if (name && age) {
+    document.getElementById('greetingMessage').innerText = `Olá, ${name} tem ${age} anos`;
+  } else {
+    alert("Por favor, preencha ambos os campos.");
+  }
+}
+
+let autoCounterValue = 0;
+
+function startAutoCounter() {
+  setInterval(() => {
+    autoCounterValue++;
+    document.getElementById('autoCounter').innerText = autoCounterValue;
+  }, 1000);
+}
+
+window.onload = function() {
+  startAutoCounter();
 }

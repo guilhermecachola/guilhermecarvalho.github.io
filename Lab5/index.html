@@ -10,25 +10,84 @@
 
     <p>1. <span id="hoverText" onmouseover="hoverEvent()" onmouseout="resetText()">Passa por aqui!</span></p>
 
-    <p><span id="paintText">2.Pinta-me!</span>
-      <button onclick="changeTextColor('red')">Red</button>
-      <button onclick="changeTextColor('green')">Green</button>
-      <button onclick="changeTextColor('blue')">Blue</button>
-    </p>
+   <p> <span id="paintText">2.Muda-me!</span>
+  <button class="color-btn" data-color="purple">Purple</button>
+  <button class="color-btn" data-color="orange">Orange</button>
+  <button class="color-btn" data-color="teal">Teal</button>
+</p>
+
 
     <p>3. Experimenta escrever...
       <input type="text" id="textInput" oninput="cycleBackgroundColors()" />
     </p>
 
-    <p>4. Escolha uma cor em inglês:
-      <input type="text" id="colorInput">
-      <button onclick="submitColor()">submeter</button>
-    </p>
+    <p>4. Escolha uma cor:
+  <select id="colorSelect" onchange="changeBodyColor(this)">
+    <option value="white">White</option>
+    <option value="blue">Blue</option>
+    <option value="red">Red</option>
+  </select>
+</p>
+
+
 
 
     <p>5. <button onclick="incrementCounter()">Conta!</button>
-      <span id="counter">33</span>
+      <span id="counter">72</span>
     </p>
+
+<p>6.</p>
+<form id="userForm">
+  <input id="nome" type="text" placeholder="Insira o seu nome" required />
+  <input id="idade" type="number" placeholder="Insira a sua idade" required />
+  <input type="submit" value="Enviar" />
+</form>
+
+<p id="mensagem"></p>
+
+<script>
+  const form = document.getElementById('userForm');
+  const mensagem = document.getElementById('mensagem');
+
+  
+  function mostrarMensagem(nome, idade) {
+    mensagem.innerText = `Olá, o ${nome} tem ${idade}!`;
+  }
+
+ 
+  window.onload = () => {
+    const nomeGuardado = localStorage.getItem('nome');
+    const idadeGuardada = localStorage.getItem('idade');
+    if (nomeGuardado && idadeGuardada) {
+      mostrarMensagem(nomeGuardado, idadeGuardada);
+      
+      document.getElementById('nome').value = nomeGuardado;
+      document.getElementById('idade').value = idadeGuardada;
+    }
+  };
+
+  
+  form.onsubmit = (e) => {
+    e.preventDefault();
+
+    const nome = document.getElementById('nome').value.trim();
+    const idade = document.getElementById('idade').value.trim();
+
+    if (nome && idade) {
+      
+      localStorage.setItem('nome', nome);
+      localStorage.setItem('idade', idade);
+
+      mostrarMensagem(nome, idade);
+    } else {
+      mensagem.innerText = 'Por favor, preencha ambos os campos.';
+    }
+  };
+</script>
+
+
+<p>7. Automatic Counter: <span id="autoCounter">0</span></p>
+
 
   </div>
 
