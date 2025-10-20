@@ -1,106 +1,103 @@
-// Estado do cesto
-let cesto = [];
+document.addEventListener("DOMContentLoaded", function() {
+  if (!localStorage.getItem("produtos-selecionados")) {
+    localStorage.setItem("produtos-selecionados", JSON.stringify([]));
+  }
 
-// Renderizar produtos na página
-function renderizarProdutos() {
-  const container = document.querySelector('.produto-container');
-  container.innerHTML = '';
+  carregarProdutos(produtos);
+  atualizaCesto();
+});
 
-  produtos.forEach(produto => {
-    const article = document.createElement('article');
-    article.innerHTML = `
-      <img src="${produto.image}" alt="${produto.title} - imagem do produto">
-      <h3>${produto.title}</h3>
-      <p>${produto.description}</p>
-      <p class="preco">${produto.price.toFixed(2)}€</p>
-      <button onclick="adicionarAoCesto(${produto.id})">Adicionar ao Cesto</button>
-    `;
-    container.appendChild(article);
+function carregarProdutos(listaProdutos) {
+  const container = document.querySelector(".produto-container");
+  container.innerHTML = "";
+
+  listaProdutos.forEach(produto => {
+    const artigo = criarProduto(produto);
+    container.appendChild(artigo);
   });
 }
 
-// Adicionar produto ao cesto
-function adicionarAoCesto(id) {
-  const produto = produtos.find(p => p.id === id);
-  const itemExistente = cesto.find(item => item.id === id);
+function criarProduto(produto) {
+  const article = document.createElement("article");
 
-  if (itemExistente) {
-    itemExistente.quantidade++;
-  } else {
-    cesto.push({ ...produto, quantidade: 1 });
-  }
+  const imagem = document.createElement("img");
+  imagem.src = produto.image;
+  imagem.alt = produto.title;
 
-  renderizarCesto();
+  const titulo = document.createElement("h3");
+  titulo.textContent = produto.title;
+
+  const descricao = document.createElement("p");
+  descricao.textContent = produto.description;
+
+  const preco = document.createElement("p");
+  preco.classList.add("preco");
+  preco.textContent = produto.price.toFixed(2) + "€";
+
+  const botao = document.createElement("button");
+  botao.textContent = "+ Adicionar ao Cesto";
+
+  botao.addEventListener("click", function() {
+    const lista = JSON.parse(localStorage.getItem("produtos-selecionados"));
+    lista.push(produto);
+    localStorage.setItem("produtos-selecionados", JSON.stringify(lista));
+    atualizaCesto();
+  });
+
+  article.append(imagem, titulo, descricao, preco, botao);
+  return article;
 }
 
-// Remover produto do cesto
-function removerDoCesto(id) {
-  cesto = cesto.filter(item => item.id !== id);
-  renderizarCesto();
-}
+function atualizaCesto() {
+  const container = document.querySelector(".cesto-container");
+  const totalSection = document.querySelector(".total-section");
+  container.innerHTML = "";
 
-// Atualizar quantidade no cesto
-function atualizarQuantidade(id, delta) {
-  const item = cesto.find(item => item.id === id);
-  if (item) {
-    item.quantidade += delta;
-    if (item.quantidade <= 0) {
-      removerDoCesto(id);
-    } else {
-      renderizarCesto();
-    }
-  }
-}
-
-// Renderizar cesto de compras
-function renderizarCesto() {
-  const container = document.querySelector('.cesto-container');
-  const totalSection = document.querySelector('.total-section');
-
-  if (cesto.length === 0) {
+  const lista = JSON.parse(localStorage.getItem("produtos-selecionados"));
+  if (lista.length === 0) {
     container.innerHTML = '<p class="cesto-vazio">O seu cesto está vazio</p>';
-    totalSection.style.display = 'none';
+    totalSection.style.display = "none";
     return;
   }
 
-  container.innerHTML = '';
   let total = 0;
-
-  cesto.forEach(item => {
-    const subtotal = item.price * item.quantidade;
-    total += subtotal;
-
-    const article = document.createElement('article');
-    article.innerHTML = `
-      <img src="${item.image}" alt="${item.title} - miniatura do produto no cesto">
-      <section style="flex: 1;">
-        <h3 style="font-size: 14px; margin-bottom: 5px;">${item.title}</h3>
-        <p style="font-size: 14px; color: #e74c3c; font-weight: bold;">${item.price.toFixed(2)}€</p>
-        <section style="display: flex; gap: 8px; margin-top: 8px; align-items: center;">
-          <button onclick="atualizarQuantidade(${item.id}, -1)" style="padding: 4px 10px; font-size: 12px;">-</button>
-          <span style="font-weight: bold;">${item.quantidade}</span>
-          <button onclick="atualizarQuantidade(${item.id}, 1)" style="padding: 4px 10px; font-size: 12px;">+</button>
-          <button onclick="removerDoCesto(${item.id})" style="background-color: #e74c3c; padding: 4px 10px; font-size: 12px; margin-left: auto;">Remover</button>
-        </section>
-      </section>
-    `;
-    container.appendChild(article);
+  lista.forEach(produto => {
+    const artigo = criaProdutoCesto(produto);
+    container.appendChild(artigo);
+    total += produto.price;
   });
 
-  document.querySelector('.total-valor').textContent = total.toFixed(2) + '€';
-  totalSection.style.display = 'block';
+  document.querySelector(".total-valor").textContent = total.toFixed(2) + "€";
+  totalSection.style.display = "block";
 }
 
-// Finalizar compra
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelector('.checkout-btn').addEventListener('click', () => {
-    if (cesto.length > 0) {
-      alert('Obrigado pela sua compra! Total: ' + document.querySelector('.total-valor').textContent);
-      cesto = [];
-      renderizarCesto();
-    }
+function criaProdutoCesto(produto) {
+  const article = document.createElement("article");
+
+  const imagem = document.createElement("img");
+  imagem.src = produto.image;
+  imagem.alt = produto.title;
+
+  const titulo = document.createElement("h3");
+  titulo.textContent = produto.title;
+
+  const preco = document.createElement("p");
+  preco.textContent = produto.price.toFixed(2) + "€";
+  preco.style.color = "#e74c3c";
+  preco.style.fontWeight = "bold";
+
+  const botaoRemover = document.createElement("button");
+  botaoRemover.textContent = "Remover";
+  botaoRemover.style.backgroundColor = "#e74c3c";
+  botaoRemover.style.color = "white";
+
+  botaoRemover.addEventListener("click", function() {
+    let lista = JSON.parse(localStorage.getItem("produtos-selecionados"));
+    lista = lista.filter(p => p.id !== produto.id);
+    localStorage.setItem("produtos-selecionados", JSON.stringify(lista));
+    atualizaCesto();
   });
 
-  // Inicializar a página
-  renderizarProdutos();
-});
+  article.append(imagem, titulo, preco, botaoRemover);
+  return article;
+}
