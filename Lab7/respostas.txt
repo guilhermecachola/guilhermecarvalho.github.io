@@ -1,0 +1,17 @@
+
+Qual o URL Base?
+
+https://api.carrismetropolitana.pt
+É a parte fixa do endereço, que identifica o servidor da API
+
+Qual o Endpoint?
+
+ /municipalities é o caminho específico que acede à lista de municípios
+
+Qual o Método HTTP usado?
+
+ GET
+
+Qual o formato usado no retorno de dados?
+
+JSON
