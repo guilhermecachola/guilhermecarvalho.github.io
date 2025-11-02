@@ -24,10 +24,24 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputPesquisa = document.getElementById("pesquisa-produto");
   inputPesquisa.addEventListener("input", aplicarFiltros);
 
-  const checkoutBtn = document.querySelector(".checkout-btn");
-  checkoutBtn.addEventListener("click", finalizarCompra);
-});
+  const comprarBtn = document.querySelector(".comprar-btn");
+  comprarBtn.addEventListener("click", finalizarCompra);
 
+  const removerTodosBtn = document.querySelector(".remover-todos-btn");
+  if (removerTodosBtn) {
+    removerTodosBtn.addEventListener("click", removerTodosProdutos);
+  }
+
+  const estudanteCheckbox = document.getElementById("estudante-checkbox");
+  if (estudanteCheckbox) {
+    estudanteCheckbox.addEventListener("change", atualizarTotalComDesconto);
+  }
+
+  const cupaoInput = document.getElementById("cupao-input");
+  if (cupaoInput) {
+    cupaoInput.addEventListener("input", atualizarTotalComDesconto);
+  }
+});
 
 function carregarCategoriasDaAPI() {
   fetch(API_CATEGORIES)
@@ -41,7 +55,6 @@ function carregarCategoriasDaAPI() {
     });
 }
 
-
 function popularSelectCategorias(categorias) {
   const select = document.getElementById("filtro-categoria");
   
@@ -52,7 +65,6 @@ function popularSelectCategorias(categorias) {
     select.appendChild(option);
   });
 }
-
 
 function aplicarFiltros() {
   const categoriaSelecionada = document.getElementById("filtro-categoria").value;
@@ -83,7 +95,6 @@ function aplicarFiltros() {
   carregarProdutos(produtosFiltrados);
 }
 
-
 function carregarProdutosDaAPI() {
   const container = document.querySelector(".produto-container");
   
@@ -102,7 +113,6 @@ function carregarProdutosDaAPI() {
     });
 }
 
-
 function carregarProdutos(listaProdutos) {
   const container = document.querySelector(".produto-container");
   container.innerHTML = "";
@@ -117,7 +127,6 @@ function carregarProdutos(listaProdutos) {
     container.appendChild(artigo);
   });
 }
-
 
 function criarProduto(produto) {
   const article = document.createElement("article");
@@ -156,10 +165,10 @@ function criarProduto(produto) {
   return article;
 }
 
-
 function atualizaCesto() {
   const container = document.querySelector(".cesto-container");
   const totalSection = document.querySelector(".total-section");
+  const checkoutSection = document.querySelector(".checkout-section");
   container.innerHTML = "";
 
   const lista = JSON.parse(localStorage.getItem("produtos-selecionados"));
@@ -167,6 +176,7 @@ function atualizaCesto() {
   if (lista.length === 0) {
     container.innerHTML = '<p class="cesto-vazio">O seu cesto está vazio</p>';
     totalSection.style.display = "none";
+    checkoutSection.style.display = "none";
     return;
   }
 
@@ -177,10 +187,12 @@ function atualizaCesto() {
     total += produto.price;
   });
 
-  document.querySelector(".total-valor").textContent = total.toFixed(2) + "€";
+  document.querySelector(".total-valor").textContent = total.toFixed(2) + " €";
   totalSection.style.display = "block";
+  checkoutSection.style.display = "block";
+  
+  atualizarTotalComDesconto();
 }
-
 
 function criaProdutoCesto(produto) {
   const article = document.createElement("article");
@@ -193,7 +205,7 @@ function criaProdutoCesto(produto) {
   titulo.textContent = produto.title;
 
   const preco = document.createElement("p");
-  preco.textContent = produto.price.toFixed(2) + "€";
+  preco.textContent = produto.price.toFixed(2) + " €";
   preco.style.color = "#e74c3c";
   preco.style.fontWeight = "bold";
 
@@ -204,7 +216,10 @@ function criaProdutoCesto(produto) {
 
   botaoRemover.addEventListener("click", function() {
     let lista = JSON.parse(localStorage.getItem("produtos-selecionados"));
-    lista = lista.filter(p => p.id !== produto.id);
+    const index = lista.findIndex(p => p.id === produto.id);
+    if (index > -1) {
+      lista.splice(index, 1);
+    }
     localStorage.setItem("produtos-selecionados", JSON.stringify(lista));
     atualizaCesto();
   });
@@ -213,6 +228,39 @@ function criaProdutoCesto(produto) {
   return article;
 }
 
+function removerTodosProdutos() {
+  if (confirm("Tem certeza que deseja remover todos os produtos do cesto?")) {
+    localStorage.setItem("produtos-selecionados", JSON.stringify([]));
+    atualizaCesto();
+  }
+}
+
+function atualizarTotalComDesconto() {
+  const lista = JSON.parse(localStorage.getItem("produtos-selecionados"));
+  
+  if (lista.length === 0) {
+    return;
+  }
+
+  let totalOriginal = 0;
+  lista.forEach(produto => {
+    totalOriginal += produto.price;
+  });
+
+  let totalComDesconto = totalOriginal;
+  const estudanteCheckbox = document.getElementById("estudante-checkbox");
+  const isEstudante = estudanteCheckbox ? estudanteCheckbox.checked : false;
+
+  if (isEstudante) {
+    totalComDesconto = totalOriginal * 0.75;
+  }
+
+  const valorCheckoutElement = document.querySelector(".valor-checkout");
+  
+  if (valorCheckoutElement) {
+    valorCheckoutElement.textContent = totalComDesconto.toFixed(2) + " €";
+  }
+}
 
 function finalizarCompra() {
   const lista = JSON.parse(localStorage.getItem("produtos-selecionados"));
@@ -223,26 +271,27 @@ function finalizarCompra() {
   }
 
   const produtos = lista.map(produto => produto.id);
-  const estudanteId = prompt("Digite o seu ID de estudante:");
-  
-  if (!estudanteId) {
-    alert("ID de estudante é obrigatório!");
-    return;
-  }
+  const isEstudante = document.getElementById("estudante-checkbox").checked;
+  const cupao = document.getElementById("cupao-input").value.trim();
 
   const data = {
-    products: produtos,
-    student_id: parseInt(estudanteId),
-    name: "Cliente",
-    address: "Morada não especificada"
+    products: produtos
   };
 
-  console.log('Enviando compra:', data);
+  if (isEstudante) {
+    data.student = true;
+  }
 
-  const checkoutBtn = document.querySelector(".checkout-btn");
-  const textoOriginal = checkoutBtn.textContent;
-  checkoutBtn.disabled = true;
-  checkoutBtn.textContent = "A processar...";
+  if (cupao !== "") {
+    data.coupon = cupao;
+  }
+
+  console.log('Enviando compra para API:', data);
+
+  const comprarBtn = document.querySelector(".comprar-btn");
+  const textoOriginal = comprarBtn.textContent;
+  comprarBtn.disabled = true;
+  comprarBtn.textContent = "A processar...";
 
   fetch(API_BUY, {
     method: 'POST',
@@ -253,28 +302,53 @@ function finalizarCompra() {
   })
   .then(response => {
     if (!response.ok) {
-      throw new Error('Erro na resposta do servidor');
+      return response.json().then(err => {
+        throw new Error(err.error || 'Erro ao processar compra');
+      });
     }
     return response.json();
   })
   .then(resultado => {
-    console.log('Resposta da compra:', resultado);
+    console.log('Resposta da API:', resultado);
     
-    if (resultado.message && resultado.message.includes("error")) {
-      alert("Erro ao processar compra: " + resultado.message);
-    } else {
-      alert(`Compra realizada com sucesso!\n\nReferência: ${resultado.reference || 'N/A'}\nTotal: ${resultado.totalCost ? resultado.totalCost.toFixed(2) + '€' : 'N/A'}`);
-      
-      localStorage.setItem("produtos-selecionados", JSON.stringify([]));
-      atualizaCesto();
+    if (resultado.error) {
+      alert("Erro: " + resultado.error);
+      return;
     }
+
+    let mensagem = "Compra realizada com sucesso!\n\n";
+    
+    if (resultado.reference) {
+      mensagem += `Referência: ${resultado.reference}\n`;
+    }
+    
+    if (resultado.totalCost !== undefined) {
+      mensagem += `Total: ${resultado.totalCost.toFixed(2)} €\n`;
+    }
+
+    if (isEstudante) {
+      mensagem += `\nDesconto de estudante aplicado!`;
+    }
+    
+    if (cupao !== "" && resultado.totalCost !== undefined) {
+      mensagem += `\nCupão "${cupao}" aplicado!`;
+    }
+
+    alert(mensagem);
+    
+    localStorage.setItem("produtos-selecionados", JSON.stringify([]));
+    
+    document.getElementById("estudante-checkbox").checked = false;
+    document.getElementById("cupao-input").value = "";
+    
+    atualizaCesto();
   })
   .catch(error => {
     console.error('Erro ao finalizar compra:', error);
-    alert('Erro ao finalizar compra. Tente novamente mais tarde.');
+    alert('Erro: ' + error.message);
   })
   .finally(() => {
-    checkoutBtn.disabled = false;
-    checkoutBtn.textContent = textoOriginal;
+    comprarBtn.disabled = false;
+    comprarBtn.textContent = textoOriginal;
   });
 }
