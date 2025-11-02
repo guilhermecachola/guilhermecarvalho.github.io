@@ -23,13 +23,28 @@
     <section id="produtos">
       <h2>Lista de Produtos</h2>
       
-      <!-- Filtro de Categorias -->
-      <div class="filtro-container">
-        <label for="filtro-categoria">Filtrar por categoria:</label>
-        <select id="filtro-categoria">
-          <option value="">Todas as categorias</option>
-          <!-- As categorias serão carregadas dinamicamente aqui -->
-        </select>
+      <div class="pesquisa-container">
+        <label for="pesquisa-produto"> Procurar:</label>
+        <input type="text" id="pesquisa-produto" placeholder="Digite o nome do produto...">
+      </div>
+
+      <div class="filtros-wrapper">
+        <div class="filtro-container">
+          <label for="filtro-categoria">Filtrar por categoria:</label>
+          <select id="filtro-categoria">
+            <option value="">Todas as categorias</option>
+          </select>
+        </div>
+
+        
+        <div class="filtro-container">
+          <label for="ordenar-preco">Ordenar por preço:</label>
+          <select id="ordenar-preco">
+            <option value="">Sem ordenação</option>
+            <option value="crescente">Preço: Menor para Maior</option>
+            <option value="decrescente">Preço: Maior para Menor</option>
+          </select>
+        </div>
       </div>
 
       <section class="produto-container">

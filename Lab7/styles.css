@@ -1,4 +1,3 @@
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +10,6 @@ body {
   color: #333;
 }
 
-/* Header */
 header {
   background-color: #2c3e50;
   color: white;
@@ -41,7 +39,6 @@ nav a:hover {
   background-color: #34495e;
 }
 
-/* Main - Layout Grid */
 main {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -51,7 +48,6 @@ main {
   padding: 0 20px;
 }
 
-/* Secção de Produtos */
 #produtos {
   background-color: white;
   padding: 20px;
@@ -61,57 +57,86 @@ main {
 #produtos h2 {
   color: #2c3e50;
   margin-bottom: 20px;
-  border-bottom: 2px solid #3498db;
   padding-bottom: 10px;
 }
 
-/* Filtro de Categorias */
+.pesquisa-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  background-color: #e8f4f8;
+  border-radius: 6px;
+  border: 1px solid #ccc; 
+  outline: none;             
+  box-shadow: none;    ;
+}
+
+.pesquisa-container label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.pesquisa-container input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.pesquisa-container input:focus {
+  outline: none;
+}
+
+.filtros-wrapper {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
 .filtro-container {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
   padding: 15px;
   background-color: #f8f9fa;
   border-radius: 6px;
   border: 1px solid #e0e0e0;
+  flex: 1;
+  min-width: 250px;
 }
 
 .filtro-container label {
   font-weight: bold;
   color: #2c3e50;
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .filtro-container select {
+  flex: 1;
   padding: 8px 12px;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
   background-color: white;
-  min-width: 200px;
   transition: border-color 0.3s;
 }
 
-.filtro-container select:hover {
-  border-color: #3498db;
-}
 
 .filtro-container select:focus {
   outline: none;
-  border-color: #3498db;
   box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
-/* Container de Produtos - Flex */
 .produto-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-/* Cada Produto (Article) */
 article {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
@@ -119,6 +144,12 @@ article {
   padding: 15px;
   width: calc(33.333% - 14px);
   text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 article img {
@@ -156,24 +187,30 @@ article button {
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
+  transition: background-color 0.3s;
 }
 
 article button:hover {
   background-color: #2980b9;
 }
 
-/* Cesto */
+article button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
 #cesto {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
   height: fit-content;
+  position: sticky;
+  top: 20px;
 }
 
 #cesto h2 {
   color: #2c3e50;
   margin-bottom: 20px;
-  border-bottom: 2px solid #3498db;
   padding-bottom: 10px;
 }
 
@@ -181,6 +218,8 @@ article button:hover {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .cesto-vazio {
@@ -227,13 +266,18 @@ article button:hover {
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
+  transition: background-color 0.3s;
 }
 
 .checkout-btn:hover {
   background-color: #229954;
 }
 
-/* Footer */
+.checkout-btn:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
 footer {
   background-color: #2c3e50;
   color: white;
@@ -246,7 +290,6 @@ footer p {
   margin: 5px 0;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   main {
     grid-template-columns: 1fr;
@@ -256,13 +299,25 @@ footer p {
     width: calc(50% - 10px);
   }
 
+  .filtros-wrapper {
+    flex-direction: column;
+  }
+
   .filtro-container {
+    width: 100%;
+  }
+
+  .pesquisa-container {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .filtro-container select {
+  .pesquisa-container input {
     width: 100%;
+  }
+
+  #cesto {
+    position: static;
   }
 }
 
