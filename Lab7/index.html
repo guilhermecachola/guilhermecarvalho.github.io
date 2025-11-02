@@ -22,6 +22,16 @@
   <main>
     <section id="produtos">
       <h2>Lista de Produtos</h2>
+      
+      <!-- Filtro de Categorias -->
+      <div class="filtro-container">
+        <label for="filtro-categoria">Filtrar por categoria:</label>
+        <select id="filtro-categoria">
+          <option value="">Todas as categorias</option>
+          <!-- As categorias serão carregadas dinamicamente aqui -->
+        </select>
+      </div>
+
       <section class="produto-container">
       </section>
     </section>
@@ -44,7 +54,6 @@
   <footer id="contacto">
   </footer>
 
-  <script src="produtos.js"></script>
   <script src="main.js"></script>
 
 </body>
